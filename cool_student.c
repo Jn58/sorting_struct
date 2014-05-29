@@ -33,6 +33,7 @@ int main() {
 					pre->next=cur->next;
 					cur->next=pre->next->next;
 					pre->next->next=cur;
+					pre=pre->next;
 				}
 				else{
 					start=cur->next;
