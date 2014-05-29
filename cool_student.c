@@ -14,7 +14,7 @@ int main() {
 		int cool;
 		struct STUDENT * next;
 	} student[10];
-	struct STUDENT * start = &(student[0]), *cur, *tmp;
+	struct STUDENT * start = &(student[0]), *cur,*pre;
 	for (i = 0; i < 9; i++) {
 		student[i].next = &student[i + 1];
 	}
@@ -26,28 +26,27 @@ int main() {
 		printf("%d번째 학생의 쿨점수 : ", i + 1);
 		scanf("%d", &student[i].cool);
 	}
-	for (i = 0; i < 9; i++) {
-		cur = start;
-		while (cur->next->next) {
-			if (cur == start) {
-				if (cur->cool < cur->next->cool) {
-					start = cur->next;
-					cur->next = start->next;
-					start->next = cur;
-					cur=start;
+	for (i = 0,cur=start,pre=0; i < 9; i++,cur=start,pre=0) {
+		for(j=0;j<9-i;j++){
+			if(cur->cool<cur->next->cool){
+				if(pre){
+					pre->next=cur->next;
+					cur->next=pre->next->next;
+					pre->next->next=cur;
+				}
+				else{
+					start=cur->next;
+					cur->next=start->next;
+					start->next=cur;
+					pre=start;
 				}
 			}
-
-			if (cur->next->cool < cur->next->next->cool) {
-				tmp = cur->next->next;
-				cur->next->next = cur->next->next->next;
-				tmp->next = cur->next;
-				cur->next = tmp;
+			else{
+				pre=cur;
+				cur=cur->next;
 			}
-			cur = cur->next;
-
 		}
-	}//
+	}
 	cur = start;
 	while(cur){
 		printf("%s\t%d\n",cur->name,cur->cool);
