@@ -8,7 +8,7 @@
 #include <stdio.h>
 
 int main() {
-	int i;
+	int i,j;
 	struct STUDENT {
 		char name[10];
 		int cool;
@@ -26,7 +26,7 @@ int main() {
 		printf("%d번째 학생의 쿨점수 : ", i + 1);
 		scanf("%d", &student[i].cool);
 	}
-	for (i = 0; i < 10; i++) {
+	for (i = 0; i < 9; i++) {
 		cur = start;
 		while (cur->next->next) {
 			if (cur == start) {
@@ -47,11 +47,11 @@ int main() {
 			cur = cur->next;
 
 		}
-	}
+	}//
 	cur = start;
-	while (cur->next) {
-		printf("%s : %2d점\n", cur->name, cur->cool);
-		cur = cur->next;
+	while(cur){
+		printf("%s\t%d\n",cur->name,cur->cool);
+		cur=cur->next;
 	}
 
 	return 0;
