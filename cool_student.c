@@ -50,8 +50,20 @@ int main() {
 	}
 	cur = start;
 	for(i=0 ; cur->next ; i++){
-		printf("%d등 %-10s%d점\n",i+1,cur->name,cur->cool);
-		cur=cur->next;
+		printf("%d등\n",i+1);
+		while(cur->next){
+			printf("%-10s %d점\n",cur->name,cur->cool);
+			if(cur->cool==cur->next->cool){
+				cur=cur->next;
+				continue;
+			}
+			else{
+				cur=cur->next;
+				break;
+			}
+		}
+		printf("\n");
+
 	}
 
 	return 0;
