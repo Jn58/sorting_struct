@@ -49,8 +49,8 @@ int main() {
 		}
 	}
 	cur = start;
-	while(cur){
-		printf("%s\t%d\n",cur->name,cur->cool);
+	for(i=0 ; cur->next ; i++){
+		printf("%dµî %-10s%dÁ¡\n",i+1,cur->name,cur->cool);
 		cur=cur->next;
 	}
 
