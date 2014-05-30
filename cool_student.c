@@ -55,6 +55,7 @@ int main() {
 			printf("%-10s %dÁ¡\n",cur->name,cur->cool);
 			if(cur->cool==cur->next->cool){
 				cur=cur->next;
+				i++;
 				continue;
 			}
 			else{
